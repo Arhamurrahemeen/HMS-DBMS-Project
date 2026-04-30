@@ -211,7 +211,7 @@ BEGIN
 
     -- ── Step 2: Calculate room charges ────────────────────────────────────────
     -- Minimum 1 day charge even for same-day discharge
-    v_days_stayed       := GREATEST(1, DATE_PART('day', NOW() - v_admit_date)::INT);
+    v_days_stayed       := GREATEST(1, CURRENT_DATE - v_admit_date::DATE);
     o_total_room_charge := v_days_stayed * v_daily_rate;
 
     -- ── Step 3: Get the invoice for this admission ────────────────────────────
